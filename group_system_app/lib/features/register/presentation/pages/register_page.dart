@@ -5,18 +5,19 @@ import 'package:group_system_app/common/constants/app_input_validators.dart';
 import 'package:group_system_app/common/constants/app_text_styles.dart';
 import 'package:group_system_app/common/widgets/custom_button.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
 
   bool _obscureText = true;
 
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -27,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void handleForm() {
+    print("Name: ${_nameController.text}");
     print("Email: ${_emailController.text}");
     print("Password: ${_passwordController.text}");
   }
@@ -43,18 +45,29 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Login",
+                  "Registro",
                   style: AppTextStyles.title,
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 Text(
-                  "Faça login para acessar todos os recursos",
+                  "Crie uma conta para acessar todos os recursos",
                   style: AppTextStyles.body,
                 ),
                 SizedBox(
                   height: 24,
+                ),
+                TextFormField(
+                  controller: _nameController,
+                  decoration: AppInputDecoration.primaryInput.copyWith(
+                    labelText: "Nome",
+                    hintText: "Insira o seu nome!",
+                  ),
+                  validator: validateString,
+                ),
+                SizedBox(
+                  height: 16,
                 ),
                 TextFormField(
                   controller: _emailController,
@@ -98,14 +111,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 CustomButton(
                   child: Text(
-                    "Entrar",
+                    "Cadastre-se",
                     style: AppTextStyles.button.copyWith(
                       color: Colors.white,
                     ),
                   ),
                   onPressed: () {
                     validateForm();
-                    // Navigator.pushNamed(context, "/home");
                   },
                 ),
                 SizedBox(
@@ -113,17 +125,18 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, "/register");
+                    // Navigator.pushNamed(context, "/register");
                     // print("Tela de Criar Conta!");
+                    Navigator.pop(context);
                   },
                   child: RichText(
                     text: TextSpan(
-                      text: "Não tem uma conta? ",
+                      text: "Já tem uma conta? ",
                       style: AppTextStyles.body
                           .copyWith(color: AppColors.lightGray),
                       children: [
                         TextSpan(
-                          text: "Cadastre-se",
+                          text: "Faça Login",
                           style: TextStyle(
                             color: AppColors.primary,
                             fontWeight: FontWeight.bold,

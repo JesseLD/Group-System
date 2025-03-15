@@ -7,8 +7,11 @@ class AppTextStyles {
     fontSize: 32,
     fontWeight: FontWeight.bold,
   );
+  static final body = TextStyle(
+    fontSize: 16,
+  );
   static final button = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.bold,
   );
 }
