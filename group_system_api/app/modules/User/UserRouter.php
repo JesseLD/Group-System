@@ -1,9 +1,9 @@
 <?php
 
-require_once 'app/modules/BaseModule/BaseModuleController.php';
+require_once 'app/modules/User/UserController.php';
 require_once 'app/utils/ResponseService.php';
 
-class BaseModuleRouter
+class UserRouter
 {
 
   private $route;
@@ -14,7 +14,7 @@ class BaseModuleRouter
   {
     $this->route = $route;
 
-    $this->controller = new BaseModuleController();
+    $this->controller = new UserController();
 
     // $this->handleRequest();
     // $this->controller = );
@@ -25,7 +25,7 @@ class BaseModuleRouter
 
     $resource = explode("/", $this->$route["url"]);
 
-    $data = require_once 'app/modules/BaseModule/BaseModuleRequestHandler.php';
+    $data = require_once 'app/modules/User/UserRequestHandler.php';
 
 
     switch ($route["method"]) {
