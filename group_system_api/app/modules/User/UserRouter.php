@@ -16,7 +16,7 @@ class UserRouter
 
     $this->controller = new UserController();
 
-    // $this->handleRequest();
+    $this->handleRequest($route);
     // $this->controller = );
   }
 
@@ -31,8 +31,8 @@ class UserRouter
     switch ($route["method"]) {
 
       case "GET":
-        if ($resource[2] == "edit") {
-          return $this->controller->getAny();
+        if ($resource[2] == "") {
+          return $this->controller->getUsers();
         } else {
 
           return new ResponseService("Resource not found", [], 404);

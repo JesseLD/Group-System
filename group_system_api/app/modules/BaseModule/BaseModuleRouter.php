@@ -16,8 +16,7 @@ class BaseModuleRouter
 
     $this->controller = new BaseModuleController();
 
-    // $this->handleRequest();
-    // $this->controller = );
+    $this->handleRequest($route);
   }
 
   public function handleRequest($route)
@@ -27,11 +26,10 @@ class BaseModuleRouter
 
     $data = require_once 'app/modules/BaseModule/BaseModuleRequestHandler.php';
 
-
     switch ($route["method"]) {
 
       case "GET":
-        if ($resource[2] == "edit") {
+        if ($resource[2] == "") {
           return $this->controller->getAny();
         } else {
 

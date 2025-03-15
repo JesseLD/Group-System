@@ -1,7 +1,7 @@
 <?php
 
 require_once 'app/modules/BaseModule/BaseModuleModel.php';
-require_once 'app/services/ResponseService.php';
+require_once 'app/utils/ResponseService.php';
 
 class BaseModuleController {
 
@@ -10,7 +10,7 @@ class BaseModuleController {
 
     $baseModuleModel = new BaseModuleModel();
     $baseModuleData = $baseModuleModel->getAny();
-    return new ResponseService("Getting All Users", $baseModuleData);
+    return new ResponseService("Getting All any", $baseModuleData);
 
   }
 }

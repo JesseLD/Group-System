@@ -1,7 +1,9 @@
 <?php
 
-include_once 'app/utils/ResponseService.php';
-include_once 'app/middlewares/api_key.php';
+require_once 'app/utils/ResponseService.php';
+require_once 'app/middlewares/api_key.php';
+
+require_once 'app/modules/User/UserRouter.php';
 
 class Router 
 {
@@ -20,10 +22,12 @@ class Router
 
     $resource = strtolower($resourceParts[1]);
 
+
     switch ($resource) {
 
       case "users":
-        new ResponseService("Getting All Users");
+        // new ResponseService("Getting All Users");
+        new UserRouter($route);
         break;
 
       default:

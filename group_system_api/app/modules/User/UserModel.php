@@ -11,10 +11,10 @@ class UserModel
     $this->pdo = require_once 'app/config/database.php';
   }
 
-  public function getAny()
+  public function getUsers()
   {
 
-    $stmt = $this->pdo->prepare("SELECT * FROM any");
+    $stmt = $this->pdo->prepare("SELECT * FROM Users");
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
