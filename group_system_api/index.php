@@ -1,3 +1,7 @@
 <?php
 
-echo "Hello World";
+require_once 'app/routes/Router.php';
+
+$router = new Router();
+
+$router->handleRequest();
