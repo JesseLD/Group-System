@@ -7,6 +7,8 @@ require_once 'app/modules/User/UserRouter.php';
 
 require_once 'app/modules/Register/RegisterRouter.php';
 
+require_once 'app/modules/Login/LoginRouter.php';
+
 class Router 
 {
   public function handleRequest() {
@@ -30,6 +32,10 @@ class Router
       case "users":
         // new ResponseService("Getting All Users");
         new UserRouter($route);
+        break;
+
+      case "login":
+        new LoginRouter($route);
         break;
 
       case "register":

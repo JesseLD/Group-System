@@ -13,4 +13,14 @@ class UserController {
     return new ResponseService("Getting All Users", $userData);
 
   }
+  public function getUser(
+    $id
+  ) {
+
+    $userModel = new UserModel();
+    $userData = $userModel->getUser($id);
+    return new ResponseService("Getting User", $userData);
+
+  }
+
 }

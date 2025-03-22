@@ -31,8 +31,13 @@ class UserRouter
     switch ($route["method"]) {
 
       case "GET":
+
         if ($resource[2] == "") {
+
           return $this->controller->getUsers();
+        } else if (isset($resource[2])) {
+
+          return $this->controller->getUser($resource[2]);
         } else {
           return new ResponseService("Resource not found", [], 404);
         }
