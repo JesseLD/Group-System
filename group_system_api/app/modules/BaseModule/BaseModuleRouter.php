@@ -22,7 +22,7 @@ class BaseModuleRouter
   public function handleRequest($route)
   {
 
-    $resource = explode("/", $this->$route["url"]);
+    $resource = explode("/",$route["url"]);
 
     $data = require_once 'app/modules/BaseModule/BaseModuleRequestHandler.php';
 

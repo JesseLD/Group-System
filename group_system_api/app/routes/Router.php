@@ -5,6 +5,10 @@ require_once 'app/middlewares/api_key.php';
 
 require_once 'app/modules/User/UserRouter.php';
 
+require_once 'app/modules/Register/RegisterRouter.php';
+
+require_once 'app/modules/Login/LoginRouter.php';
+
 class Router 
 {
   public function handleRequest() {
@@ -30,12 +34,17 @@ class Router
         new UserRouter($route);
         break;
 
+      case "login":
+        new LoginRouter($route);
+        break;
+
+      case "register":
+        new RegisterRouter($route);
+        break;
+
       default:
-        return new ResponseService("Resource not found", [], 404);
+        return new ResponseService("Resource not found 👎", [], 404);
     }
-
-
-
 
   }
 

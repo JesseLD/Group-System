@@ -18,4 +18,14 @@ class UserModel
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public function getUser(
+    $id
+  )
+  {
+
+    $stmt = $this->pdo->prepare("SELECT * FROM Users WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
 }
