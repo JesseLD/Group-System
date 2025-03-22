@@ -5,7 +5,6 @@ require_once 'app/utils/ResponseService.php';
 
 class BaseModuleController {
 
-
   public function getAny() {
 
     $baseModuleModel = new BaseModuleModel();

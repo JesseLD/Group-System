@@ -23,7 +23,7 @@ class UserRouter
   public function handleRequest($route)
   {
 
-    $resource = explode("/", $this->$route["url"]);
+    $resource = explode("/", $route["url"]);
 
     $data = require_once 'app/modules/User/UserRequestHandler.php';
 
@@ -34,7 +34,6 @@ class UserRouter
         if ($resource[2] == "") {
           return $this->controller->getUsers();
         } else {
-
           return new ResponseService("Resource not found", [], 404);
         }
 
