@@ -4,6 +4,8 @@ import 'package:group_system_app/common/constants/app_input_decoration.dart';
 import 'package:group_system_app/common/constants/app_input_validators.dart';
 import 'package:group_system_app/common/constants/app_text_styles.dart';
 import 'package:group_system_app/common/widgets/custom_button.dart';
+import 'package:group_system_app/features/login/logic/providers/login_provider.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -26,13 +28,31 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  void handleForm() {
-    print("Email: ${_emailController.text}");
-    print("Password: ${_passwordController.text}");
+  Future<void> handleForm() async {
+    final loginProvider = Provider.of<LoginProvider>(context, listen: false);
+
+    try {
+      await loginProvider.login(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Erro ao fazer login!"),
+          // backgroundColor: AppColors.red,
+        ),
+      );
+    }
+    // print("Email: ${_emailController.text}");
+    // print("Password: ${_passwordController.text}");
   }
 
   @override
   Widget build(BuildContext context) {
+    final loginProvider = Provider.of<LoginProvider>(context);
+
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -97,12 +117,21 @@ class _LoginPageState extends State<LoginPage> {
                   height: 24,
                 ),
                 CustomButton(
-                  child: Text(
-                    "Entrar",
-                    style: AppTextStyles.button.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
+                  child: loginProvider.isLoading
+                      ? SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                            // color: AppColors.white,
+                          ),
+                        )
+                      : Text(
+                          "Entrar",
+                          style: AppTextStyles.button.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
                   onPressed: () {
                     validateForm();
                     // Navigator.pushNamed(context, "/home");

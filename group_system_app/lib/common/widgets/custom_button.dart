@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:group_system_app/common/constants/app_colors.dart';
-import 'package:group_system_app/common/constants/app_text_styles.dart';
 
 // ignore: must_be_immutable
 class CustomButton extends StatefulWidget {
@@ -31,7 +30,7 @@ class _CustomButtonState extends State<CustomButton> {
             style: ElevatedButton.styleFrom(
               elevation: 0,
               backgroundColor: AppColors.primary,
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             child: widget.child,
           ),
