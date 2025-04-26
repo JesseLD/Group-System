@@ -9,6 +9,8 @@ require_once 'app/modules/Register/RegisterRouter.php';
 
 require_once 'app/modules/Login/LoginRouter.php';
 
+require_once 'app/modules/Version/VersionRouter.php';
+
 class Router 
 {
   public function handleRequest() {
@@ -28,6 +30,10 @@ class Router
 
 
     switch ($resource) {
+
+      case "version":
+        new VersionRouter($route);
+        break;
 
       case "users":
         // new ResponseService("Getting All Users");
