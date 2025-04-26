@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:group_system_app/features/login/data/model/user_model.dart';
 
 class LoginModel {
@@ -16,7 +17,6 @@ class LoginModel {
         id: 0,
         name: "",
         email: "",
-        password: "",
       ),
     );
   }

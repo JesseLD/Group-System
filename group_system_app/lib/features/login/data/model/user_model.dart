@@ -5,12 +5,11 @@ class UserModel {
   int id;
   String name;
   String email;
-  String password;
+  
   UserModel({
     required this.id,
     required this.name,
     required this.email,
-    required this.password,
   });
 
   // TODO: Implement HasPermission
@@ -19,13 +18,11 @@ class UserModel {
     int? id,
     String? name,
     String? email,
-    String? password,
   }) {
     return UserModel(
       id: id ?? this.id,
       name: name ?? this.name,
       email: email ?? this.email,
-      password: password ?? this.password,
     );
   }
 
@@ -34,7 +31,6 @@ class UserModel {
       'id': id,
       'name': name,
       'email': email,
-      'password': password,
     };
   }
 
@@ -43,7 +39,6 @@ class UserModel {
       id: map['id'] as int,
       name: map['name'] as String,
       email: map['email'] as String,
-      password: map['password'] as String,
     );
   }
 
@@ -53,22 +48,18 @@ class UserModel {
       UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() {
-    return 'UserModel(id: $id, name: $name, email: $email, password: $password)';
-  }
+  String toString() => 'UserModel(id: $id, name: $name, email: $email)';
 
   @override
   bool operator ==(covariant UserModel other) {
     if (identical(this, other)) return true;
-
-    return other.id == id &&
-        other.name == name &&
-        other.email == email &&
-        other.password == password;
+  
+    return 
+      other.id == id &&
+      other.name == name &&
+      other.email == email;
   }
 
   @override
-  int get hashCode {
-    return id.hashCode ^ name.hashCode ^ email.hashCode ^ password.hashCode;
-  }
+  int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
 }
