@@ -13,6 +13,8 @@ class UserModel {
     required this.password,
   });
 
+  // TODO: Implement HasPermission
+
   UserModel copyWith({
     int? id,
     String? name,
