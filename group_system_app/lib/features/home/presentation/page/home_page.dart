@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:group_system_app/common/constants/app_colors.dart';
+import 'package:group_system_app/features/settings/presentation/pages/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,16 +18,17 @@ class _HomePageState extends State<HomePage> {
         child: Text("Page 1"),
       ),
     ),
-    Container(
-      child: Center(
-        child: Text("Page 2"),
-      ),
-    ),
-    Container(
-      child: Center(
-        child: Text("Page 3"),
-      ),
-    ),
+    // Container(
+    //   child: Center(
+    //     child: Text("Page 2"),
+    //   ),
+    // ),
+    // Container(
+    //   child: Center(
+    //     child: Text("Page 3"),
+    //   ),
+    // ),
+    SettingsPage(),
   ];
 
   @override
@@ -44,13 +46,13 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.home),
             label: "Home",
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Search",
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.search),
+          //   label: "Search",
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: "Settings",
+            label: "Ajustes",
           ),
         ],
         onTap: (index) {

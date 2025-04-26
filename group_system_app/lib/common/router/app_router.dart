@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:group_system_app/features/home/presentation/page/home_page.dart';
 import 'package:group_system_app/features/login/presentation/pages/login_page.dart';
+import 'package:group_system_app/features/outdated/presentation/pages/outdated_page.dart';
 import 'package:group_system_app/features/register/presentation/pages/register_page.dart';
 import 'package:group_system_app/features/splash/presentation/pages/splash_page.dart';
 
@@ -10,6 +11,10 @@ class AppRouter {
       case "/":
         return MaterialPageRoute(
           builder: (_) => const SplashPage(),
+        );
+      case "/outdated":
+        return MaterialPageRoute(
+          builder: (_) => const OutdatedPage(),
         );
 
       case "/login":
