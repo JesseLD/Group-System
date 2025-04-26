@@ -4,6 +4,10 @@ import 'package:group_system_app/common/constants/app_input_decoration.dart';
 import 'package:group_system_app/common/constants/app_input_validators.dart';
 import 'package:group_system_app/common/constants/app_text_styles.dart';
 import 'package:group_system_app/common/widgets/custom_button.dart';
+import 'package:group_system_app/common/widgets/popups.dart';
+import 'package:group_system_app/features/register/data/model/register_model.dart';
+import 'package:group_system_app/features/register/logic/provider/register_provider.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -27,10 +31,35 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  void handleForm() {
-    print("Name: ${_nameController.text}");
-    print("Email: ${_emailController.text}");
-    print("Password: ${_passwordController.text}");
+  void handleForm() async {
+    final registerProvider =
+        Provider.of<RegisterProvider>(context, listen: false);
+    // print("Name: ${_nameController.text}");
+    // print("Email: ${_emailController.text}");
+    // print("Password: ${_passwordController.text}");
+
+    final registerModel = RegisterModel(
+      name: _nameController.text,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+
+    try {
+      await registerProvider.register(registerModel);
+
+      _nameController.clear();
+      _emailController.clear();
+      _passwordController.clear();
+
+      showMessagePopup(context, "Sucesso!", "Usuário cadastrado com sucesso!");
+
+      Navigator.pushNamed(context, "/login");
+    } catch (e) {
+      showMessagePopup(context, "Erro ao cadastrar", "Usuário já existe");
+
+      // print("Error: $e");
+      // Handle error here, e.g., show a snackbar or dialog
+    }
   }
 
   @override

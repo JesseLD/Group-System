@@ -29,7 +29,15 @@ class LoginModel
       return new ResponseService("Invalid password", [], 400);
     }
 
-    return $user;
+    // $user['password'] = ""; // Remove password from the response
+    unset($user['password']); // Remove password from the response
+
+    $data = [
+      "user" => $user,
+      
+    ];
+
+    return $data;
     
   }
 }
