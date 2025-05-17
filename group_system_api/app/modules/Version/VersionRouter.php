@@ -28,7 +28,11 @@ class VersionRouter
 
     switch ($route["method"]) {
 
+     
+
       case "GET":
+
+
         if ($resource[2] == "") {
           // return $this->controller->getAny();
           // echo "HERE";
@@ -37,12 +41,14 @@ class VersionRouter
           $developmentVersion = "1.0.1";
           $updateUrl = "http://localhost:3000/update";
 
-          $respose = [
+          $response = [
             "productionVersion" => $productionVersion,
             "developmentVersion" => $developmentVersion,
             "updateUrl" => $updateUrl
           ];
-          return new ResponseService("Getting Version", $respose);
+
+          return new ResponseService("Getting Version", $response);
+          
         } else {
 
           return new ResponseService("Resource not found", [], 404);
